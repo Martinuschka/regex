@@ -21,13 +21,13 @@ pip install rich
 
 
 ## usage
-### Command Line Mode
+### command line mode
 ```shell script
 python regex.py -p "<pattern>" -t "<text>"
 ```
 
 
-### Interactive Mode
+### interactive mode
 ```shell script
 python regex.py --interactive
 ```
