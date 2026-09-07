@@ -52,7 +52,7 @@ def explain_pattern(pattern: str) -> str:
     return "\n".join(explanation) if explanation else "No explanation available."
 
 
-def test_regex(pattern: str, text: str) -> None:
+def check_regex(pattern: str, text: str) -> None:
     """Tests the regex and displays results."""
     console.print(Panel(f"[bold]Pattern:[/bold] {pattern}", title="Regex Tester", border_style="blue"))
     console.print(Panel(f"[bold]Text:[/bold] {text}", border_style="green"))
@@ -102,7 +102,7 @@ def interactive_mode() -> None:
         if text.lower() in ("exit", "quit"):
             break
 
-        test_regex(pattern, text)
+        check_regex(pattern, text)
         console.print("\n" + "-" * 50 + "\n")
 
 
@@ -126,7 +126,7 @@ Examples:
     if args.interactive:
         interactive_mode()
     elif args.pattern and args.text:
-        test_regex(args.pattern, args.text)
+        check_regex(args.pattern, args.text)
     else:
         parser.print_help()
 
