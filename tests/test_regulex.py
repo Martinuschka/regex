@@ -1,6 +1,4 @@
-import pytest
-import re
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 from rich.text import Text
 from regulex import (
     highlight_matches,
