@@ -2,7 +2,7 @@ import pytest
 import re
 from unittest.mock import patch, MagicMock
 from rich.text import Text
-from regex import (
+from regulex import (
     highlight_matches,
     explain_pattern,
     test_regex,
