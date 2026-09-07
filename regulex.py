@@ -142,7 +142,7 @@ def print_banner():
         ║      █     █     █     █      ║
         ║                               ║
         ╚═══════════════════════════════╝
-        Regex Tester
+        R e g u l e x
         """
     )
 
