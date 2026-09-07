@@ -3,7 +3,7 @@ from rich.text import Text
 from regulex import (
     highlight_matches,
     explain_pattern,
-    test_regex,
+    check_regex,
     interactive_mode,
     print_banner,
 )
@@ -148,55 +148,55 @@ class TestExplainPattern:
 
 
 class TestTestRegex:
-    """Tests for the test_regex function."""
+    """Tests for the check_regex function."""
 
     @patch('regex.console')
-    def test_test_regex_with_matches(self, mock_console):
+    def test_check_regex_with_matches(self, mock_console):
         """Test regex testing with matches found."""
-        test_regex(r"\d+", "abc123def456")
+        check_regex(r"\d+", "abc123def456")
         # Verify that console was called to display results
         assert mock_console.print.called
 
     @patch('regex.console')
-    def test_test_regex_no_matches(self, mock_console):
+    def test_check_regex_no_matches(self, mock_console):
         """Test regex testing with no matches."""
-        test_regex(r"\d+", "abcdef")
+        check_regex(r"\d+", "abcdef")
         mock_console.print.assert_called()
         # Check that "No matches" message was displayed
         calls = [str(call) for call in mock_console.print.call_args_list]
         assert any("No matches" in str(call) for call in calls)
 
     @patch('regex.console')
-    def test_test_regex_invalid_pattern(self, mock_console):
+    def test_check_regex_invalid_pattern(self, mock_console):
         """Test regex testing with invalid regex pattern."""
-        test_regex(r"[invalid", "text")
+        check_regex(r"[invalid", "text")
         # Should catch regex error
         mock_console.print.assert_called()
         calls = [str(call) for call in mock_console.print.call_args_list]
         assert any("error" in str(call).lower() for call in calls)
 
     @patch('regex.console')
-    def test_test_regex_multiple_matches(self, mock_console):
+    def test_check_regex_multiple_matches(self, mock_console):
         """Test regex with multiple matches."""
-        test_regex(r"\d", "1a2b3c")
+        check_regex(r"\d", "1a2b3c")
         mock_console.print.assert_called()
 
     @patch('regex.console')
-    def test_test_regex_single_match(self, mock_console):
+    def test_check_regex_single_match(self, mock_console):
         """Test regex with a single match."""
-        test_regex(r"\d+", "abc123")
+        check_regex(r"\d+", "abc123")
         mock_console.print.assert_called()
 
     @patch('regex.console')
-    def test_test_regex_empty_text(self, mock_console):
+    def test_check_regex_empty_text(self, mock_console):
         """Test regex with empty text."""
-        test_regex(r"\d+", "")
+        check_regex(r"\d+", "")
         mock_console.print.assert_called()
 
     @patch('regex.console')
-    def test_test_regex_pattern_with_groups(self, mock_console):
+    def test_check_regex_pattern_with_groups(self, mock_console):
         """Test regex with capturing groups."""
-        test_regex(r"(\d+)-(\d+)", "123-456")
+        check_regex(r"(\d+)-(\d+)", "123-456")
         mock_console.print.assert_called()
 
 
