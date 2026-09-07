@@ -36,8 +36,9 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Debug
       run: |
-        pwd
-        find .
+        python -c "import os; print(os.getcwd())"
+        python -c "import sys; print(sys.path)"
+        python -c "import regulex; print(regulex.__file__)"
     - name: Test with pytest
       run: |
         pytest
