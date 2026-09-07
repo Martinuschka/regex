@@ -271,7 +271,7 @@ class TestPrintBanner:
         """Test that banner contains the title."""
         print_banner()
         call_args = mock_print.call_args[0][0]
-        assert "Regex Tester" in call_args
+        assert "R e g u l e x" in call_args
 
 
 class TestRegexPatterns:
