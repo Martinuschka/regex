@@ -147,17 +147,17 @@ class TestExplainPattern:
         assert "no explanation" in result.lower()
 
 
-class TestTestRegex:
+class TestCheckRegex:
     """Tests for the check_regex function."""
 
-    @patch('regex.console')
+    @patch('regulex.console')
     def test_check_regex_with_matches(self, mock_console):
         """Test regex testing with matches found."""
         check_regex(r"\d+", "abc123def456")
         # Verify that console was called to display results
         assert mock_console.print.called
 
-    @patch('regex.console')
+    @patch('regulex.console')
     def test_check_regex_no_matches(self, mock_console):
         """Test regex testing with no matches."""
         check_regex(r"\d+", "abcdef")
@@ -166,7 +166,7 @@ class TestTestRegex:
         calls = [str(call) for call in mock_console.print.call_args_list]
         assert any("No matches" in str(call) for call in calls)
 
-    @patch('regex.console')
+    @patch('regulex.console')
     def test_check_regex_invalid_pattern(self, mock_console):
         """Test regex testing with invalid regex pattern."""
         check_regex(r"[invalid", "text")
@@ -175,25 +175,25 @@ class TestTestRegex:
         calls = [str(call) for call in mock_console.print.call_args_list]
         assert any("error" in str(call).lower() for call in calls)
 
-    @patch('regex.console')
+    @patch('regulex.console')
     def test_check_regex_multiple_matches(self, mock_console):
         """Test regex with multiple matches."""
         check_regex(r"\d", "1a2b3c")
         mock_console.print.assert_called()
 
-    @patch('regex.console')
+    @patch('regulex.console')
     def test_check_regex_single_match(self, mock_console):
         """Test regex with a single match."""
         check_regex(r"\d+", "abc123")
         mock_console.print.assert_called()
 
-    @patch('regex.console')
+    @patch('regulex.console')
     def test_check_regex_empty_text(self, mock_console):
         """Test regex with empty text."""
         check_regex(r"\d+", "")
         mock_console.print.assert_called()
 
-    @patch('regex.console')
+    @patch('regulex.console')
     def test_check_regex_pattern_with_groups(self, mock_console):
         """Test regex with capturing groups."""
         check_regex(r"(\d+)-(\d+)", "123-456")
@@ -203,21 +203,21 @@ class TestTestRegex:
 class TestInteractiveMode:
     """Tests for the interactive_mode function."""
 
-    @patch('regex.console')
+    @patch('regulex.console')
     def test_interactive_mode_exit(self, mock_console):
         """Test interactive mode with immediate exit."""
         mock_console.input.side_effect = ["exit"]
         interactive_mode()
         mock_console.input.assert_called()
 
-    @patch('regex.console')
+    @patch('regulex.console')
     def test_interactive_mode_quit(self, mock_console):
         """Test interactive mode with quit command."""
         mock_console.input.side_effect = ["quit"]
         interactive_mode()
         mock_console.input.assert_called()
 
-    @patch('regex.console')
+    @patch('regulex.console')
     def test_interactive_mode_help(self, mock_console):
         """Test interactive mode help command."""
         mock_console.input.side_effect = ["help", "exit"]
@@ -225,7 +225,7 @@ class TestInteractiveMode:
         # Verify help panel was printed
         assert mock_console.print.called
 
-    @patch('regex.console')
+    @patch('regulex.console')
     def test_interactive_mode_full_flow(self, mock_console):
         """Test interactive mode with pattern and text input."""
         mock_console.input.side_effect = [r"\d+", "abc123", "exit"]
@@ -233,14 +233,14 @@ class TestInteractiveMode:
         # Should have input calls for pattern and text
         assert mock_console.input.call_count >= 2
 
-    @patch('regex.console')
+    @patch('regulex.console')
     def test_interactive_mode_quit_on_text_input(self, mock_console):
         """Test quitting during text input in interactive mode."""
         mock_console.input.side_effect = [r"\d+", "quit"]
         interactive_mode()
         mock_console.input.assert_called()
 
-    @patch('regex.console')
+    @patch('regulex.console')
     def test_interactive_mode_help_then_exit(self, mock_console):
         """Test help followed by exit in interactive mode."""
         mock_console.input.side_effect = ["help", "exit"]
