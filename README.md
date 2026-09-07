@@ -1,4 +1,4 @@
-# regex
+# regulex
 
 A simple command-line interface (CLI) tool for testing regular expressions in Python with visual feedback and pattern explanations.
 
@@ -23,20 +23,20 @@ pip install rich
 ## Usage
 ### Command Line Mode
 ```shell script
-python regex.py -p "<pattern>" -t "<text>"
+python regulex.py -p "<pattern>" -t "<text>"
 ```
 
 
 ### Interactive Mode
 ```shell script
-python regex.py --interactive
+python regulex.py --interactive
 ```
 
 
 ## Example
 Testing a pattern with command line arguments:
 ```shell script
-python regex.py -p "\d{3}" -t "ABC123XYZ"
+python regulex.py -p "\d{3}" -t "ABC123XYZ"
 ```
 
 
