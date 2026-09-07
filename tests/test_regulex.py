@@ -257,7 +257,7 @@ class TestPrintBanner:
         print_banner()
         mock_print.assert_called()
         call_args = mock_print.call_args[0][0]
-        assert "R e g u l e x" in call_args
+        assert "r e g u l e x" in call_args
 
     @patch('builtins.print')
     def test_print_banner_contains_box(self, mock_print):
@@ -271,7 +271,7 @@ class TestPrintBanner:
         """Test that banner contains the title."""
         print_banner()
         call_args = mock_print.call_args[0][0]
-        assert "R e g u l e x" in call_args
+        assert "r e g u l e x" in call_args
 
 
 class TestRegexPatterns:

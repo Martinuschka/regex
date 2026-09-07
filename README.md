@@ -10,32 +10,32 @@ A simple command-line interface (CLI) tool for testing regular expressions in Py
 - Clear visualization of match positions and counts
 
 ## Installation
-```shell script
+```bash
 # Create virtual environment
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # Install required package
-pip install rich
+pip install -r requirements.txt
 ```
 
 
 ## Usage
 ### Command Line Mode
-```shell script
+```bash
 python regulex.py -p "<pattern>" -t "<text>"
 ```
 
 
 ### Interactive Mode
-```shell script
+```bash
 python regulex.py --interactive
 ```
 
 
 ## Example
 Testing a pattern with command line arguments:
-```shell script
+```bash
 python regulex.py -p "\d{3}" -t "ABC123XYZ"
 ```
 
@@ -47,4 +47,3 @@ python regulex.py -p "\d{3}" -t "ABC123XYZ"
 
 ## Requirements
 - Python 3.10+
-- `rich` library (for enhanced terminal output)
