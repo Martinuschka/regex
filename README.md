@@ -12,7 +12,7 @@ A simple command-line interface (CLI) tool for testing regular expressions in Py
 ## Installation
 ```bash
 # Create virtual environment
-python -m venv venv
+python -m venv .venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # Install required package
