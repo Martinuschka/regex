@@ -31,6 +31,10 @@ python regulex.py -p "<pattern>" -t "<text>"
 ```bash
 python regulex.py --interactive
 ```
+or
+```bash
+python regulex.py -i
+```
 
 
 ## Example
